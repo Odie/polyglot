@@ -16,14 +16,14 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "illuminate/container": "~4.2",
-    "illuminate/support": "~4.2"
+    "illuminate/container": "~5.0",
+    "illuminate/support": "~5.0"
   },
   "require-dev": {
     "mockery/mockery": "~0.9",
-    "illuminate/routing": "~4.2",
-    "illuminate/database": "~4.2",
-    "illuminate/translation": "~4.2",
+    "illuminate/routing": "~5.0",
+    "illuminate/database": "~5.0",
+    "illuminate/translation": "~5.0",
     "patchwork/utf8": "~1.1",
     "phpunit/phpunit": "~4.3"
   },
