@@ -24,12 +24,8 @@ class PolyglotServiceProvider extends ServiceProvider
 		// Bind services
 		$this->app->singleton('polyglot.translator', 'Polyglot\Services\Lang');
 
-		$this->app->singleton('polyglot.router', function ($app) {
-			return new Router($app['events'], $app);
-		});
-
 		$this->app->singleton('polyglot.url', function ($app) {
-			$routes = $app['polyglot.router']->getRoutes();
+			$routes = $app['router']->getRoutes();
 
 			return new UrlGenerator($routes, $app->rebinding('request', function ($app, $request) {
 				$app['url']->setRequest($request);
@@ -55,7 +51,6 @@ class PolyglotServiceProvider extends ServiceProvider
 		// Swap facades if need be
 		if ($this->app['config']->get('polyglot::facades')) {
 			Facades\Lang::swap($this->app['polyglot.translator']);
-			Facades\Route::swap($this->app['polyglot.router']);
 			Facades\URL::swap($this->app['polyglot.url']);
 		}
 
@@ -78,6 +73,6 @@ class PolyglotServiceProvider extends ServiceProvider
 	 */
 	public function provides()
 	{
-		return array('polyglot.translator', 'polyglot.router', 'polyglot.url');
+		return array('polyglot.translator', 'polyglot.url');
 	}
 }
