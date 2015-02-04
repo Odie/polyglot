@@ -28,7 +28,7 @@ class PolyglotServiceProvider extends ServiceProvider
 			$routes = $app['router']->getRoutes();
 
 			return new UrlGenerator($routes, $app->rebinding('request', function ($app, $request) {
-				$app['url']->setRequest($request);
+				$app['polyglot.url']->setRequest($request);
 			}));
 		});
 
@@ -51,7 +51,7 @@ class PolyglotServiceProvider extends ServiceProvider
 		// Swap facades if need be
 		if ($this->app['config']->get('polyglot::facades')) {
 			Facades\Lang::swap($this->app['polyglot.translator']);
-			Facades\URL::swap($this->app['polyglot.url']);
+//			Facades\URL::swap($this->app['polyglot.url']);
 		}
 
 		// Configure gettext
