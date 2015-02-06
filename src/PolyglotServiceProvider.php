@@ -19,7 +19,6 @@ class PolyglotServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		$this->app['config']->package('anahkiasen/polyglot', __DIR__.'/config');
 
 		// Bind services
 		$this->app->singleton('polyglot.translator', 'Polyglot\Services\Lang');
@@ -48,6 +47,8 @@ class PolyglotServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
+		$this->app['config']->package('anahkiasen/polyglot', __DIR__.'/config');
+
 		// Swap facades if need be
 		if ($this->app['config']->get('polyglot::facades')) {
 			Facades\Lang::swap($this->app['polyglot.translator']);
