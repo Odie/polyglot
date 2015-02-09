@@ -45,8 +45,9 @@ class Router extends IlluminateRouter
 			return $group;
 		}
 
-		// Set locale on translator
-		$this->container['translator']->setLocale($locale);
+		// Set locale for the app
+		$this->container['app']->setLocale($locale);
+
 
 		// Return group untouched if default
 		if ($locale == $this->container['config']->get('polyglot::default')) {
